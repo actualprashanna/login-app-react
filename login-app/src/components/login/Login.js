@@ -11,22 +11,26 @@ class Login extends Component {
   }
 
   checkCredential = (formValues) => {
+    let flag = false;
     this.props.users.map((user) => {
       if (
         user.username === formValues.username &&
         user.password === formValues.password
       ) {
-        return true;
+        flag = true;
       } else {
-        return false;
+        console.log(user);
       }
     });
+    return flag;
   };
 
   onSubmit = (formValues) => {
-    if (this.checkCredential) {
+    if (this.checkCredential(formValues) === true) {
       this.props.authenticate(formValues);
       history.push("/");
+    } else {
+      console.log("incorrect");
     }
   };
 
