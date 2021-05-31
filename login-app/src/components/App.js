@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Redirect, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import history from "../history";
 
 import Home from "./home/Home";

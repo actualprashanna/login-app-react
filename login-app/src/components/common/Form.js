@@ -42,11 +42,11 @@ class Form extends React.Component {
         <Field
           name="password"
           component={this.renderInput}
-          label="Enter Description"
+          label="Enter Password"
           className="form-control"
           type="password"
         />
-        <button className="btn btn-primary">
+        <button className="btn btn-primary" type="submit">
           <span className="spinner-border spinner-border-sm mr-1"></span>
           Login
         </button>

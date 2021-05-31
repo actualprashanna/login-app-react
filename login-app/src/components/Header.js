@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { logOut } from "../actions";
+import { connect } from "react-redux";
+import history from "../history";
 
-const Header = () => {
+const Header = (props) => {
+  const onClick = () => {
+    history.push("/login");
+    props.logOut();
+  };
+
   return (
     <div>
       <nav class="navbar navbar-expand navbar-dark bg-dark">
@@ -9,13 +17,17 @@ const Header = () => {
           <Link class="nav-item nav-link" to="/">
             Home
           </Link>
-          <Link class="nav-item nav-link" to="/login">
+          <div
+            class="nav-item nav-link"
+            onClick={onClick}
+            style={{ cursor: "pointer" }}
+          >
             Logout
-          </Link>
+          </div>
         </div>
       </nav>
     </div>
   );
 };
 
-export default Header;
+export default connect(null, { logOut })(Header);
