@@ -16,10 +16,9 @@ export const logOut = () => {
 };
 
 export const authenticate = (formValues) => {
-  return async (dispatch) => {
-    const users = await userAuth.get("/login", formValues);
-
-    dispatch({ type: AUTHENTICATE, payload: users.data });
+  return {
+    type: AUTHENTICATE,
+    payload: { ...formValues },
   };
 };
 

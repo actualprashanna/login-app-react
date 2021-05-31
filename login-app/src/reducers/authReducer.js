@@ -2,7 +2,7 @@ import { AUTHENTICATE, FETCH_USERS, LOG_IN, LOG_OUT } from "../actions/types";
 const INITIAL_STATE = {
   isSignedIn: null,
   users: null,
-  loggedUser: null,
+  loggedUser: {},
 };
 
 const authType = (state = INITIAL_STATE, action) => {

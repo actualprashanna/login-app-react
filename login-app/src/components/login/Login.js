@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Form from "../common/Form";
 import { connect } from "react-redux";
 import { fetchUsers, logIn, authenticate } from "../../actions";
-import { BrowserRouter, Redirect } from "react-router-dom";
 import history from "../../history";
+import Footer from "../common/Footer";
 
 class Login extends Component {
   componentDidMount() {
@@ -25,6 +25,7 @@ class Login extends Component {
 
   onSubmit = (formValues) => {
     if (this.checkCredential) {
+      this.props.authenticate(formValues);
       history.push("/");
     }
   };
@@ -45,6 +46,7 @@ class Login extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

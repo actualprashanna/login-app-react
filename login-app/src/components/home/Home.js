@@ -1,44 +1,45 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Header from "../Header";
+import { connect } from "react-redux";
+import { logOut } from "../../actions";
+import Footer from "../common/Footer";
 
 class Home extends Component {
+  renderUsername() {
+    if (this.props.loggedUser.username) {
+      return (
+        <ul>
+          <li>{`${this.props.loggedUser.username} User`}</li>
+        </ul>
+      );
+    } else {
+      return <div className="spinner-border spinner-border-sm"></div>;
+    }
+  }
+
   render() {
     return (
       <div>
         <Header />
         <div className="container">
-          <div class="card mt-4">
-            <h4 class="card-header">
+          <div className="card mt-4">
+            <h4 className="card-header">
               You're logged in with Angular 8 & Basic HTTP Authentication!!
             </h4>
-            <div class="card-body">
+            <div className="card-body">
               <h6>Users from secure api end point</h6>
-              <div class="spinner-border spinner-border-sm"></div>
-              <ul>
-                <li></li>
-              </ul>
+              {this.renderUsername()}
             </div>
           </div>
         </div>
-        <div class="text-center mt-4">
-          <p>
-            <Link
-              to="https://jasonwatmore.com/post/2019/06/26/angular-8-basic-http-authentication-tutorial-example"
-              target="_top"
-            >
-              Angular 8 - Basic HTTP Authentication Example & Tutorial
-            </Link>
-          </p>
-          <p>
-            <Link to="https://jasonwatmore.com" target="_top">
-              JasonWatmore.com
-            </Link>
-          </p>
-        </div>
+        <Footer />
       </div>
     );
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return { loggedUser: state.auth.loggedUser };
+};
+
+export default connect(mapStateToProps, { logOut })(Home);

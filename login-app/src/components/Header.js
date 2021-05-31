@@ -12,13 +12,13 @@ const Header = (props) => {
 
   return (
     <div>
-      <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <div class="navbar-nav">
-          <Link class="nav-item nav-link" to="/">
+      <nav className="navbar navbar-expand navbar-dark bg-dark">
+        <div className="navbar-nav">
+          <Link className="nav-item nav-link" to="/">
             Home
           </Link>
           <div
-            class="nav-item nav-link"
+            className="nav-item nav-link"
             onClick={onClick}
             style={{ cursor: "pointer" }}
           >
